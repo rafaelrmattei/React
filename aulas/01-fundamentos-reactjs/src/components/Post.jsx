@@ -1,12 +1,14 @@
+import { Avatar } from './Avatar'
+import { Comment } from './Comment'
+
 import styles from './Post.module.css'
 
 export function Post(props) {
     return (
         <article className={styles.post}>
-
             <header>
                 <div className={styles.avatar}>
-                    <img src={props.avatar} alt={props.author} />
+                    <Avatar src={props.avatar} hasBorder />
                     <div className={styles.author}>
                         <strong>{props.author}</strong>
                         <span>{props.role}</span>
@@ -39,6 +41,11 @@ export function Post(props) {
                 </footer>
             </form>
 
+            <div className={styles.commentList}>
+                <Comment />
+                <Comment />
+                <Comment />
+            </div>
         </article>
     )
 }
