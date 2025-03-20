@@ -1,0 +1,134 @@
+.post {
+    overflow: hidden;
+    background: var(--gray-800);
+    border-radius: 8px;
+    padding: 2.5rem;
+}
+
+.post+.post {
+    margin-top: 2rem;
+}
+
+.post>header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post>header img {
+    width: calc(3rem + 12px);
+    height: calc(3rem + 12px);
+    border-radius: 8px;
+    border: 4px solid var(--gray-800);
+    outline: 2px solid var(--green-500);
+    background-color: var(--gray-800);
+}
+
+.post>header time {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: .875rem;
+    color: var(--gray-400);
+}
+
+.avatar {
+    display: flex;
+    gap: 1rem;
+}
+
+.author {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.author strong {
+    color: var(--gray-100);
+    line-height: 1.6;
+}
+
+.author span {
+    font-size: .875rem;
+    line-height: 1.6;
+    color: var(--gray-400);
+}
+
+.content {
+    margin-top: 2rem;
+    color: var(--gray-300);
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.content a {
+    font-weight: bold;
+    color: var(--green-500);
+    text-decoration: none;
+}
+
+.content a:hover {
+    color: var(--green-300);
+}
+
+hr {
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid var(--gray-600);
+}
+
+.feedback {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.feedback strong {
+    color: var(--gray-100);
+}
+
+.feedback textarea {
+    width: 100%;
+    height: 6rem;
+    background: var(--gray-900);
+    border: 1px solid var(--green-500);
+    color: var(--gray-300);
+    border-radius: 8px;
+    padding: 1rem;
+    resize: none;
+    line-height: 1.4;
+}
+
+.feedback footer {
+    visibility: hidden;
+    max-height: 0;
+}   
+
+.feedback:focus-within footer{
+    visibility: visible;
+    max-height: none;
+}   
+
+.feedback button[type=submit] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 1rem 1.5rem;
+    background: var(--green-500);
+    color: var(--white);
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+
+.feedback button[type=submit]:hover {
+    background: var(--green-300);
+}
+
