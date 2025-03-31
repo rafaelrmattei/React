@@ -57,3 +57,65 @@ Exemplo: ao invés de se repetir o header da aplicação, coloca-se ele dentro d
   </Route>
 </Routes>
 
+
+# FORMS (CONTROLLED/UNCONTROLLED)
+
+1 - Controlled são os formulários feitos usando useState que leem cada movimento feito pelo usuário.
+-- O problema é que se forem muito grandes o react precisa reconstruir toda interface e pode ficar lento
+-- Para formulários menos é ótimo
+
+2 - Uncontrolled são formulários feitos sem o useState, pegando as informações dos inputs somente no onSubmit por Exemplo
+-- Para formulários muito grandes não virarem gargalos
+
+3 - Utilizar a biblioteca React Hook Form que utiliza os dois formatos/melhor dos dois mundos
+-- npm i react-hook-form
+-- import { useForm } from "react-hook-form"
+-- const { register, handleSubmit, watch } = useForm()
+-- const task = watch('task') <StartCountdownButton type="submit" disabled={!task}> #O watch serve para pegar o valor em tempo real da variável como se fosse usando o useState
+-- <TaskInput
+      id="task"
+      list="task-suggestions"
+      placeholder="Dê um nome para o seu projeto"
+      {...register('task')} # Esse se transforma no nome do input
+    />
+    {...register('minutesAmount', { valueAsNumber: true })} #Pode receber um objeto de parametros para dizer por exemplo que é do tipo number
+-- const { register, handleSubmit } = useForm()
+  function handleCreateNewCycle() {}
+  return (
+    <HomeContainer>
+      <form onSubmit={handleSubmit(handleCreateNewCycle)} action=""> #O onSubmit recebe a funcção do useForm passando como parametro a função que criamos para lidar com o submit
+
+4 - Utilizar a biblioteca para validar o form (yup, joi, zod) #todas são boas, zod é o que o loirinho gosta pq integra melhor com o TS 
+-- npm i zod
+-- npm i @hookform/resolvers #Permite integrar react-hook-form com as bibliotecas de validação
+-- import { zodResolver } from '@hookform/resolvers/zod'
+-- import * as zod from 'zod'
+-- Utilizando o zod
+    const newCycleFormValidationSchema = zod.object({ #Criar uma constante com as regras do formulário
+      task: zod.string().min(1, 'Informe a tarefa'),
+      minutesAmount: zod.number().min(5).max(60)
+    })
+
+    type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
+
+    export function Home() {
+      const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+        resolver: zodResolver(newCycleFormValidationSchema)
+      })
+-- Resetar o form
+export function Home() {
+  const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({ #Adiciona a função de reset aqui
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0
+    }
+  })
+
+  const task = watch('task')
+  const isSubmitDisabled = !task
+
+  function handleCreateNewCycle(data: NewCycleFormData) {
+    console.log(data)
+    reset() #Chama a função de reset()
+  }
