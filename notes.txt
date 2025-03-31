@@ -1,0 +1,59 @@
+# NOVO PROJETO COM VITE
+npm create vite@latest
+
+
+# INSTALAR AS DEPENDENCIAS
+npm i 
+
+
+# RODAR O PROJETO
+npm run dev
+
+
+# PACOTE DE ÍCONES PHOSPHOR
+npm i phosphor-react    
+
+
+# UTILIZANDO ROTAS
+npm i react-router-dom
+
+1 - Criar o arquivo de rotas (Router.tsx) dentro de src
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './pages/Home'
+import { History } from './pages/History'
+export function Router() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/history" element={<History />} />
+    </Routes>
+  )
+}
+
+2 - Dentro de App.tsx importar as rotas, e pra funcionar deve-se importar o BrowserRouter do pacote router-dom e colocar o arquivo de rotas (Router) dentro dele
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "./Router";
+export function App() {
+  return (
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+  )
+}
+
+
+# UTILIZANDO O COMPONENTE OUTLET
+import { Outlet } from "react-router-dom"
+<Outlet />
+É um espaço para ser inserido um conteúdo. 
+Exemplo: ao invés de se repetir o header da aplicação, coloca-se ele dentro da pasta layouts num componente onde o entra o Header e o Outlet (que vai receber o conteúdo que muda entre as páginas) http://localhost/
+<Routes>
+  <Route path="/" element={<DefaultLayout />}> #Deve-se colocar esse elemento Route englobando as rotas que utilização esse layout
+    <Route path="/" element={<Home />} />
+    <Route path="/history" element={<History />} />
+  </Route>
+  <Route path="/admin" element={<AdmintLayout />}> #Exemplo de rotas para admin com outro arquivo de layout http://localhost/admin/products
+    <Route path="/products" element={<Products />} />
+  </Route>
+</Routes>
+
