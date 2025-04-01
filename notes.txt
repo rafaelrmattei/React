@@ -138,3 +138,8 @@ useEffect(() => {
     })
 }, []) # O segundo parametro fica vazio
 -- Como não usar. Não usar para atualizar um estado. Cuidar para não multiplicar o número de renderizações com useState e useEffect juntos
+
+
+# PROP DRILLING
+-- Quando temos MUITAS propriedades APENAS para comunicação entre componentes
+-- Solução: CONTEXT API: Permite compartilharmos informações entre VÁRIOS componentes ao mesmo tempo
