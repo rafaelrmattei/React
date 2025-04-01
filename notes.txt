@@ -14,6 +14,10 @@ npm run dev
 npm i phosphor-react    
 
 
+# PACOTE DE MANIPULAÇÃO DE DATAS
+npm i date-fns
+
+
 # UTILIZANDO ROTAS
 npm i react-router-dom
 
@@ -119,3 +123,18 @@ export function Home() {
     console.log(data)
     reset() #Chama a função de reset()
   }
+
+
+# HOOK USEEFFECT
+import { useEffect } from 'react'
+-- Executa quando carrega a tela e toda vez que uma váriavel que ele está escutando é alterada.
+-- Se quiser executar somente uma vez, não passa o segundo parametro. Ex:
+useEffect(() => {
+  console.log("Primeira renderização") # Bom para fazer uma chamada de api para mostrar dados em tela e depois não executar mais
+  fetch('htts://api.github.com/users/diego3g/repos')
+    .then(response => response.json())
+    .then(data => {
+      setList()
+    })
+}, []) # O segundo parametro fica vazio
+-- Como não usar. Não usar para atualizar um estado. Cuidar para não multiplicar o número de renderizações com useState e useEffect juntos
