@@ -143,3 +143,40 @@ useEffect(() => {
 # PROP DRILLING
 -- Quando temos MUITAS propriedades APENAS para comunicação entre componentes
 -- Solução: CONTEXT API: Permite compartilharmos informações entre VÁRIOS componentes ao mesmo tempo
+
+
+# CONTEXT
+-- Importar do react import { createContext } from "react"
+-- Criar contexto: 
+  interface Cycle {
+    id: string
+    task: string
+    minutesAmount: number
+    startDate: Date
+    interruptedDate?: Date
+    finishedDate?: Date
+  }
+  interface CyclesContextType {
+    activeCycle: Cycle | undefined
+  }
+  export const CyclesContext = createContext({} as CyclesContextType) # Deve-se exportar o contexto
+-- Englobar os elementos filhos que vão utilizar as variáveis do contexto com <CyclesContext.Provider value={{ activeCycle }}></CyclesContext.Provider>
+-- Para utilizar nos filhos:
+  import { useContext } from "react"; # Para usar o contexto
+  import { CyclesContext } from "../.."; # Que foi exportado do pai 
+  const { activeCycle } = useContext(CyclesContext)
+-- Usando o useForm() que é uma biblioteca externa não faz muito sentido passar os campos por contexto
+  const newCycleForm = useForm<NewCycleFormData>({ # Foi colocado dentro de uma variável
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0
+    }
+  })
+  const { handleSubmit, watch, reset } = newCycleForm # Depois foi desestruturado e removido o register
+  <FormProvider {...newCycleForm}> #Adicionado o form provider fora do NewCycleForm que vem do import { FormProvider, useForm } from "react-hook-form", e foi feito o spread das váriaveis do newCycleForm que foi criada
+    <NewCycleForm />
+  </FormProvider>
+  E dentro do elemento filho: 
+  import { useFormContext } from "react-hook-form";
+  const { register } = useFormContext()
