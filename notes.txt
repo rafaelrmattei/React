@@ -181,4 +181,49 @@ useEffect(() => {
   import { useFormContext } from "react-hook-form";
   const { register } = useFormContext()
 
-#
+# USEREDUCER 
+-- Usado quando a complexidade da troca de um estado (state) é muito complexa 
+Isso: const [cycles, setCycles] = useState<Cycle[]>([])
+Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknown) => {
+    return state
+  }, [])
+
+
+#BIBLIOTECA IMMER
+-- npm i immer
+-- import { produce } from 'immer'
+-- Utilizado no lugar dos maps, para não precisar percorrer um array para fazer uma alteração
+--// return {
+  //   ...state,
+  //   cycles: [...state.cycles, action.payload.newCycle],
+  //   activeCycleId: action.payload.newCycle.id
+  // }
+  return produce(state, draft => {
+    draft.cycles.push(action.payload.newCycle)
+    draft.activeCycleId = action.payload.newCycle.id
+  })
+
+  // return {
+  //   ...state,
+  //   cycles: state.cycles.map(cycle => {
+  //     if (cycle.id === state.activeCycleId) {
+  //       return { ...cycle, interruptedDate: new Date() }
+  //     } else {
+  //       return cycle
+  //     }
+  //   }),
+  //   activeCycleId: null
+
+  // }
+  const currentCycleIndex = state.cycles.findIndex(cycle => {
+    return cycle.id === state.activeCycleId
+  })
+
+  if (currentCycleIndex < 0) {
+    return state
+  }
+
+  return produce(state, draft => {
+    draft.cycles[currentCycleIndex].interruptedDate = new Date() 
+    draft.activeCycleId = null
+  })

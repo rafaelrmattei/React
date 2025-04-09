@@ -6,8 +6,6 @@ import { formatDistanceToNow } from "date-fns";
 
 export function History() {
   const { cycles } = useContext(CyclesContext)
-  
-  console.log(cycles)
 
   return (
     <HistoryContainer>
@@ -29,7 +27,7 @@ export function History() {
                 <tr key={cycle.id}>
                   <td>{cycle.task}</td>
                   <td>{cycle.minutesAmount} minutos</td>
-                  <td>{formatDistanceToNow(cycle.startDate, {
+                  <td>{formatDistanceToNow(new Date(cycle.startDate), {
                     addSuffix: true,
                     locale: ptBR
                   })}</td>
