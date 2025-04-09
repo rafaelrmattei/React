@@ -20,9 +20,79 @@ export const defaultTheme = {
 
 	'background': '#FAFAFA',
 
+	'title-xs': `
+		font-size: 1.125rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	'title-s': `
+		font-size: 1.25rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	'title-m': `
+		font-size: 1.5rem;
+		line-height: 130%;
+		font-weight: 800;
+	`,
+	'title-l': `
+		font-size: 2rem;
+		line-height: 130%;
+		font-weight: 800;
+	`,
 	'title-xl': `
 		font-size: 3rem;
 		line-height: 130%;
 		font-weight: 800;
-	`
+	`,
+
+	'text-xs': `
+		font-size: 0.75rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	'text-s': `
+		font-size: 0.875rem;
+		line-height: 130%;
+		font-weight: 400;
+	`,
+	'text-m-regular': `
+		font-size: 1rem;
+		line-height: 130%;
+		font-weight: 400;
+	`,
+	'text-m-bold': `
+		font-size: 1rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	'text-l-regular': `
+		font-size: 1.25rem;
+		line-height: 130%;
+		font-weight: 400;
+	`,
+	'text-l-bold': `
+		font-size: 1.25rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	
+	'tag': `
+		font-size: 0.625rem;
+		line-height: 130%;
+		font-weight: 700;
+	`,
+	
+	'button-m': `
+		font-size: 0.75rem;
+		line-height: 160%;
+		font-weight: 400;
+	`,
+	
+	'button-g': `
+		font-size: 0.875rem;
+		line-height: 160%;
+		font-weight: 700;
+	`,
+
 }
