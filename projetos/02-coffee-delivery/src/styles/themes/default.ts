@@ -24,75 +24,89 @@ export const defaultTheme = {
 		font-size: 1.125rem;
 		line-height: 130%;
 		font-weight: 700;
+  	font-family: "Baloo 2", sans-serif;
 	`,
 	'title-s': `
 		font-size: 1.25rem;
 		line-height: 130%;
 		font-weight: 700;
+  	font-family: "Baloo 2", sans-serif;
 	`,
 	'title-m': `
 		font-size: 1.5rem;
 		line-height: 130%;
 		font-weight: 800;
+  	font-family: "Baloo 2", sans-serif;
 	`,
 	'title-l': `
 		font-size: 2rem;
 		line-height: 130%;
 		font-weight: 800;
+  	font-family: "Baloo 2", sans-serif;
 	`,
 	'title-xl': `
 		font-size: 3rem;
 		line-height: 130%;
 		font-weight: 800;
+  	font-family: "Baloo 2", sans-serif;
 	`,
 
 	'text-xs': `
 		font-size: 0.75rem;
 		line-height: 130%;
 		font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 	`,
 	'text-s': `
 		font-size: 0.875rem;
 		line-height: 130%;
 		font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 	`,
 	'text-m-regular': `
 		font-size: 1rem;
 		line-height: 130%;
 		font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 	`,
 	'text-m-bold': `
 		font-size: 1rem;
 		line-height: 130%;
 		font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 	`,
 	'text-l-regular': `
 		font-size: 1.25rem;
 		line-height: 130%;
 		font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 	`,
 	'text-l-bold': `
 		font-size: 1.25rem;
 		line-height: 130%;
 		font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 	`,
-	
+
 	'tag': `
 		font-size: 0.625rem;
 		line-height: 130%;
 		font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 	`,
-	
+
 	'button-m': `
 		font-size: 0.75rem;
 		line-height: 160%;
 		font-weight: 400;
+    font-family: 'Roboto', sans-serif;
 	`,
-	
+
 	'button-g': `
 		font-size: 0.875rem;
 		line-height: 160%;
 		font-weight: 700;
+    font-family: 'Roboto', sans-serif;
 	`,
 
 }
