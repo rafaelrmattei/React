@@ -1,15 +1,12 @@
 import { NavLink } from 'react-router-dom'
-
 import { MapPin, ShoppingCart } from 'phosphor-react'
-
 import { HeaderContainer } from './styles.ts'
-import CoffeeDeliveryLogo from '../../assets/coffee-delivery-logo.svg'
 
 export function Header() {
   return (
     <HeaderContainer>
       <NavLink to="/">
-        <img src={CoffeeDeliveryLogo} alt="" />
+        <img src="/images/coffee-delivery-logo.svg" alt="" />
       </NavLink>
       <nav>
         <NavLink to="#" title="Endereço de entrega">
@@ -18,6 +15,7 @@ export function Header() {
         </NavLink>
         <NavLink to="/checkout" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
+          <span></span>
         </NavLink>
       </nav>
     </HeaderContainer>
