@@ -17,7 +17,7 @@ export function Header() {
           <MapPin size={22} weight="fill" />
           Porto Alegre, RS
         </NavLink>
-        <NavLink id="cart-button" to="/checkout" title="Carrinho">
+        <NavLink id="cart-button" to="/cart" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
           <span></span>
         </NavLink>

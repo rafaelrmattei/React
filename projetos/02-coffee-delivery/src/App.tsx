@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom"
-import { Router } from "./Router"
 import { ThemeContextProvider } from "./contexts/ThemeContext"
+import { Router } from "./Router"
 
 export function App() {
   return (
