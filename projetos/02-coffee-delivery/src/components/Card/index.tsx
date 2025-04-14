@@ -1,5 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
-import { Container, Tags, Title, Description, Control, Price } from "./styles";
+import { Container, Tags, Title, Description, Control, Price, AddToCart } from "./styles";
 import { QuantityInput } from "../Form/QuantityInput";
 
 interface CoffeeProps {
@@ -41,9 +41,9 @@ export function Card({ coffee }: CoffeeProps) {
 
         <QuantityInput></QuantityInput>
 
-        <button>
+        <AddToCart>
           <ShoppingCart size={22} weight="fill" />
-        </button>
+        </AddToCart>
 
       </Control>
     </Container>
