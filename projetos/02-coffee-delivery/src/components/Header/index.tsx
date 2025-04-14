@@ -1,23 +1,36 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { MapPin, ShoppingCart } from 'phosphor-react'
-import { HeaderContainer } from './styles.ts'
+import { MapPin, ShoppingCart, SunDim, Moon } from 'phosphor-react'
+import { Container } from './styles.ts'
+import { ThemeContext } from '../../contexts/ThemeContext.tsx'
 
 export function Header() {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext)
+
   return (
-    <HeaderContainer>
+    <Container>
       <NavLink to="/">
         <img src="/images/coffee-delivery-logo.svg" alt="" />
       </NavLink>
       <nav>
-        <NavLink to="#" title="Endereço de entrega">
+        <NavLink id="adress-button" to="#" title="Endereço de entrega">
           <MapPin size={22} weight="fill" />
           Porto Alegre, RS
         </NavLink>
-        <NavLink to="/checkout" title="Carrinho">
+        <NavLink id="cart-button" to="/checkout" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
           <span></span>
         </NavLink>
+        {isDarkMode ? (
+          <button id="theme-button-light" onClick={toggleTheme} title="Trocar tema">
+            <SunDim size={22} />
+          </button>
+        ) : (
+          <button id="theme-button-dark" onClick={toggleTheme} title="Trocar tema">
+            <Moon size={22} />
+          </button>
+        )}
       </nav>
-    </HeaderContainer>
+    </Container>
   )
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
+export const Container = styled.div`
   max-width: 74rem;
   margin: 0 auto;
   display: flex;
@@ -32,9 +32,39 @@ export const HeaderContainer = styled.div`
       padding: 0.5rem;
       border-radius: 6px;
       text-decoration: none;
+    }    
+
+    a#theme-button{
+      color: ${props => props.theme.black};
     }
 
-    a:first-child{
+    button {
+      border: none;
+      line-height: normal;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button#theme-button-light {
+      background-color: ${props => props.theme["base-button"]};
+      color: ${props => props.theme.black};
+    }
+
+    button#theme-button-dark {
+      background-color: ${props => props.theme["base-subtitle"]};
+      color: ${props => props.theme.white};
+    }
+
+    button:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    a#adress-button{
       background-color: ${props => props.theme["purple-light"]};
       color: ${props => props.theme["purple-dark"]};
       ${({ theme }) => theme.fonts.text.s};
@@ -46,12 +76,12 @@ export const HeaderContainer = styled.div`
       }
     }
 
-    a:first-child:focus {
+    a#adress-button:focus {
       outline: 0;
       box-shadow: 0 0 0 2px ${props => props.theme["purple-dark"]};
     }
 
-    a:last-child {
+    a#cart-button {
       background-color: ${props => props.theme["yellow-light"]};
       position: relative;
 
@@ -79,7 +109,7 @@ export const HeaderContainer = styled.div`
       }
     }
 
-    a:last-child:focus {
+    a#cart-button:focus {
       outline: 0;
       box-shadow: 0 0 0 2px ${props => props.theme["yellow-dark"]};
     }

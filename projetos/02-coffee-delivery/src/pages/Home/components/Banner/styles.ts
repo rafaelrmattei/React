@@ -16,7 +16,7 @@ export const BannerContainer = styled.section`
   
   @media screen and (max-width: 1365px) {
     height: auto;
-    padding: 1rem 3rem;
+    padding: 2rem 3rem;
   }
 `
 

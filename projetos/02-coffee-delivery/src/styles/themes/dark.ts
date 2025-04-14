@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-export const defaultTheme = {
+export const darkTheme = {
   white: '#FFF',
   black: '#000',
 
@@ -19,9 +19,9 @@ export const defaultTheme = {
   'base-hover': '#D7D5D5',
   'base-button': '#E6E5E5',
   'base-input': '#EDEDED',
-  'base-card': '#F3F2F2',
+  'base-card': '#1A1A1A',
 
-  background: '#FAFAFA',
+  background: '#000000',
 
   fonts: {
     title: {
