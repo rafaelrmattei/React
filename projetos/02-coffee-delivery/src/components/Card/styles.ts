@@ -51,6 +51,29 @@ export const Control = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 2rem;
+
+  & > button {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["purple-dark"]};
+    border: none;
+    border-radius: 6px;
+    width: 2.375rem;
+    height: 2.375rem;
+    cursor: pointer;
+    transition: background-color .2s;
+
+    &:focus {
+      outline: 0;
+      box-shadow: none;
+    }
+
+    &:hover {
+      background-color: ${props => props.theme["purple"]};
+    }
+  }
 `
 
 export const Price = styled.div`
@@ -65,28 +88,5 @@ export const Price = styled.div`
 
   span:last-child {
     ${({theme}) => theme.fonts.title.m}
-  }
-`
-
-export const AddToCart = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme["purple-dark"]};
-  border: none;
-  border-radius: 6px;
-  width: 2.375rem;
-  height: 2.375rem;
-  cursor: pointer;
-  transition: background-color .2s;
-
-  &:focus {
-    outline: 0;
-    box-shadow: none;
-  }
-
-  &:hover {
-    background-color: ${props => props.theme["purple"]};
   }
 `

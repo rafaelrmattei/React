@@ -1,8 +1,9 @@
-import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money } from "phosphor-react";
-import { Container, Content, Resume, Adress, Form, Payment, Title, Subtitle, Methods } from "./styles";
+import { MapPinLine, CurrencyDollar, CreditCard, Bank, Money, Trash } from "phosphor-react";
+import { Container, Content, Resume, Adress, Form, Payment, Title, Subtitle, Methods, Product, Totals } from "./styles";
 import { useTheme } from "styled-components";
 import { Radio } from "../../components/Form/Radio";
 import { TextField } from "../../components/Form/TextField";
+import { QuantityInput } from "../../components/Form/QuantityInput";
 
 export function Cart() {
   const theme = useTheme();
@@ -44,11 +45,11 @@ export function Cart() {
           <Methods>
             <Radio name="payment-method" id="payment-cc">
               <CreditCard size={16} />
-              <span>Cartão de crédito</span>
+              <span><span>Cartão de </span>crédito</span>
             </Radio>
             <Radio name="payment-method" id="payment-cd">
               <Bank size={16} />
-              <span>Cartão de débito</span>
+              <span><span>Cartão de </span>débito</span>
             </Radio>
             <Radio name="payment-method" id="payment-m">
               <Money size={16} />
@@ -62,7 +63,62 @@ export function Cart() {
         <Title>Cafés selecionados</Title>
 
         <Resume>
+          <div>
+            <Product>
+              <img src="/images/coffees/americano.png" alt="Americano" />
 
+              <div>
+                <div className="infos">
+                  <span>Americano</span>
+                  <strong>R$ 9,90</strong>
+                </div>
+                <div className="actions">
+                  <QuantityInput></QuantityInput>
+                  <button type="submit">
+                    <Trash size={16} />
+                    Remover
+                  </button>
+                </div>
+              </div>
+            </Product>
+
+            <Product>
+              <img src="/images/coffees/arabe.png" alt="Arabe" />
+
+              <div>
+                <div className="infos">
+                  <span>Arabe</span>
+                  <strong>R$ 19,80</strong>
+                </div>
+                <div className="actions">
+                  <QuantityInput></QuantityInput>
+                  <button type="submit">
+                    <Trash size={16} />
+                    Remover
+                  </button>
+                </div>
+              </div>
+            </Product>
+          </div>
+
+          <Totals>
+            <div>
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+
+            <div>
+              <strong>Total</strong>
+              <strong>R$ 33,20</strong>
+            </div>
+          </Totals>
+
+          <input type="submit" value="Confirmar Pedido" />
         </Resume>
       </Content>
     </Container>

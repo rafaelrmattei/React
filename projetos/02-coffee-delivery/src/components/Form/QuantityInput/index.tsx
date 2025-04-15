@@ -1,41 +1,23 @@
-import { useState } from "react"
+import { InputHTMLAttributes } from "react"
 import { Container } from "./styles"
 import { Plus, Minus } from "phosphor-react"
 
-export function QuantityInput() {
-  const [quantityCount, setQuantityCount] = useState(0)
+interface QuantityInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  quantity: number
+  incrementQuantity: () => void
+  decrementQuantity: () => void
+}
 
-  function handlePrev() {
-    setQuantityCount((state) => Math.max(0, state - 1));
-  }
-
-  function handleNext() {
-    setQuantityCount((state) => state + 1)
-  }
-
+export function QuantityInput({ quantity, incrementQuantity, decrementQuantity, ...props }: QuantityInputProps) {
   return (
     <Container>
-      <button
-        className="prev"
-        onClick={handlePrev}
-        aria-label="Diminuir quantidade"
-      >
+      <button onClick={incrementQuantity}>
         <Minus size={14} />
       </button>
 
-      <input
-        type="number"
-        min="0"
-        value={quantityCount === 0 ? "" : quantityCount}
-        readOnly
-      >
-      </input>
+      <input type="number" min="1" value={quantity} {...props} />
 
-      <button
-        className="next"
-        onClick={handleNext}
-        aria-label="Aumentar quantidade"
-      >
+      <button onClick={decrementQuantity}>
         <Plus size={14} />
       </button>
     </Container>

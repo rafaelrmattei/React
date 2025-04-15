@@ -2,10 +2,12 @@ import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart, SunDim, Moon } from 'phosphor-react'
 import { Container } from './styles.ts'
-import { ThemeContext } from '../../contexts/ThemeContext.tsx'
+import { ThemeContext } from '../../contexts/Theme/ThemeContext.tsx'
+import { CartContext } from '../../contexts/Cart/CartContext.tsx'
 
 export function Header() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
+  const { itemsQuantity } = useContext(CartContext)
 
   return (
     <Container>
@@ -19,7 +21,7 @@ export function Header() {
         </NavLink>
         <NavLink id="cart-button" to="/cart" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
-          <span></span>
+          <span>{itemsQuantity !== 0 ? itemsQuantity : ""}</span>
         </NavLink>
         {isDarkMode ? (
           <button id="theme-button-light" onClick={toggleTheme} title="Trocar tema">
