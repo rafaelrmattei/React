@@ -30,4 +30,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .Toastify__toast {
+    font-family: 'Roboto', sans-serif;
+    padding: 1.3rem 1.3rem 1.5rem 1.3rem;
+
+    strong {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: .875rem;
+    }
+  }
 `

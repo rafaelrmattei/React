@@ -3,6 +3,7 @@ import { ShoppingCart } from "phosphor-react";
 import { Container, Tags, Title, Description, Control, Price } from "./styles";
 import { QuantityInput } from "../Form/QuantityInput";
 import { CartContext } from "../../contexts/Cart/CartContext";
+import { toast } from 'react-toastify';
 
 interface CoffeeProps {
   coffee: {
@@ -31,6 +32,21 @@ export function Card({ coffee }: CoffeeProps) {
     handleSetItems({
       id: coffee.id,
       quantity: quantity
+    })
+    setQuantity(1)
+    toast.success(
+      <div>
+        <strong>{`${quantity}x ${coffee.title}`}</strong><br />
+        <span>Adicionado ao carrinho</span>
+      </div>, {
+      position: "top-right",
+      autoClose: 1750,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "light"
     })
   }
 
