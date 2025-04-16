@@ -1,10 +1,12 @@
-import { createContext } from "react"
-import { Item } from "./CartContextProvider"
+import { createContext } from "react";
+import { Item } from "../../reducers/items/reducer";
 
 interface CartContextType {
-  items: Item[]
-  handleSetItems: (product: Item) => void
-  itemsQuantity: number
+  items: Item[];
+  itemsQuantity: number;
+  handleSetItems: (item: Item) => void;
+  handleUpdateItemQuantity: (id: string, quantity: number) => void;
+  handleRemoveItem: (id: string) => void;
 }
 
-export const CartContext = createContext({} as CartContextType)
+export const CartContext = createContext({} as CartContextType);

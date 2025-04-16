@@ -70,6 +70,7 @@ export const Container = styled.div`
       ${({ theme }) => theme.fonts.text.s};
       line-height: normal;
       gap: 0.25rem;
+      cursor: default;
 
       svg {
         color: ${props => props.theme.purple}
@@ -78,7 +79,7 @@ export const Container = styled.div`
 
     a#adress-button:focus {
       outline: 0;
-      box-shadow: 0 0 0 2px ${props => props.theme["purple-dark"]};
+      box-shadow: none;
     }
 
     a#cart-button {

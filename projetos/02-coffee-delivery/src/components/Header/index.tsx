@@ -4,10 +4,12 @@ import { MapPin, ShoppingCart, SunDim, Moon } from 'phosphor-react'
 import { Container } from './styles.ts'
 import { ThemeContext } from '../../contexts/Theme/ThemeContext.tsx'
 import { CartContext } from '../../contexts/Cart/CartContext.tsx'
+import { LocationContext } from '../../contexts/Location/LocationContext.tsx'
 
 export function Header() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)
   const { itemsQuantity } = useContext(CartContext)
+  const { location } = useContext(LocationContext)
 
   return (
     <Container>
@@ -15,10 +17,12 @@ export function Header() {
         <img src="/images/coffee-delivery-logo.svg" alt="" />
       </NavLink>
       <nav>
-        <NavLink id="adress-button" to="#" title="Endereço de entrega">
-          <MapPin size={22} weight="fill" />
-          Porto Alegre, RS
-        </NavLink>
+        {location.length > 0 && (
+          <NavLink id="adress-button" to="#" title="Endereço de entrega">
+            <MapPin size={22} weight="fill" />
+            {location[0].city} - {location[0].state}
+          </NavLink>
+        )}
         <NavLink id="cart-button" to="/cart" title="Carrinho">
           <ShoppingCart size={22} weight="fill" />
           <span>{itemsQuantity !== 0 ? itemsQuantity : ""}</span>

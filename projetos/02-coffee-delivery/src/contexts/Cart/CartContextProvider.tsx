@@ -1,63 +1,67 @@
-import { ReactNode, useEffect, useState } from "react"
-import { CartContext } from "./CartContext"
-
-export interface Item {
-  id: string
-  quantity: number
-}
+import { ReactNode, useEffect, useReducer } from "react";
+import { CartContext } from "./CartContext";
+import {
+  addNewItemAction,
+  removeItemAction,
+  updateQuantityItemAction,
+} from "../../reducers/items/actions";
+import { Item, itemsReducer } from "../../reducers/items/reducer";
 
 interface CartContextProviderProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
+  const [itemsState, dispatch] = useReducer(itemsReducer, [], () => {
+    const storedItems = localStorage.getItem("@coffee-delivery:items-1.0.0");
+    const storedItemsQuantity = localStorage.getItem(
+      "@coffee-delivery:items-total-1.0.0"
+    );
 
-  const storedItems = localStorage.getItem('@coffee-delivery:items-1.0.0')
-  const storedItemsQuantity = localStorage.getItem('@coffee-delivery:items-total-1.0.0')
+    const initialItems = storedItems ? JSON.parse(storedItems) : [];
+    const initialItemsQuantity = storedItemsQuantity
+      ? JSON.parse(storedItemsQuantity)
+      : 0;
 
-  const initialItems = storedItems ? JSON.parse(storedItems) : []
-  const initialItemsQuantity = storedItemsQuantity ? JSON.parse(storedItemsQuantity) : 0
+    return {
+      items: initialItems,
+      itemsQuantity: initialItemsQuantity,
+    };
+  });
 
-  const [items, setItems] = useState<Item[]>(initialItems)
-  const [itemsQuantity, setItemsQuantity] = useState(initialItemsQuantity)
+  const { items, itemsQuantity } = itemsState;
 
   function handleSetItems(item: Item) {
-    setItems((prevItems) => {
-      const itemFound = prevItems.find((prevItem) => prevItem.id === item.id)
+    dispatch(addNewItemAction(item));
+  }
 
-      if (itemFound) {
-        return prevItems.map((prevItem) => {
-          if (prevItem.id === item.id) {
-            return {
-              ...prevItem,
-              quantity: prevItem.quantity + item.quantity
-            }
-          }
-          return prevItem
-        })
-      } else {
-        return [...prevItems, item]
-      }
-    })  
+  function handleUpdateItemQuantity(id: string, quantity: number) {
+    dispatch(updateQuantityItemAction(id, quantity));
+  }
+
+  function handleRemoveItem(id: string) {
+    dispatch(removeItemAction(id));
   }
 
   useEffect(() => {
-    const totalItems = items.reduce((total, item) => {
-      return total + item.quantity
-    }, 0)
-    setItemsQuantity(totalItems);
-    localStorage.setItem('@coffee-delivery:items-1.0.0', JSON.stringify(items))
-    localStorage.setItem('@coffee-delivery:items-total-1.0.0', JSON.stringify(totalItems))
-  }, [items])
+    localStorage.setItem("@coffee-delivery:items-1.0.0", JSON.stringify(items));
+    localStorage.setItem(
+      "@coffee-delivery:items-total-1.0.0",
+      JSON.stringify(itemsQuantity)
+    );
+  }, [items, itemsQuantity]);
 
   return (
-    <CartContext.Provider value={{
-      items,
-      handleSetItems,
-      itemsQuantity
-    }}
+    <CartContext.Provider
+      value={{
+        items,
+        itemsQuantity,
+        handleSetItems,
+        handleUpdateItemQuantity,
+        handleRemoveItem,
+      }}
     >
       {children}
     </CartContext.Provider>
-  )
+  );
 }

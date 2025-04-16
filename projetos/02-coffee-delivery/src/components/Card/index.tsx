@@ -3,51 +3,57 @@ import { ShoppingCart } from "phosphor-react";
 import { Container, Tags, Title, Description, Control, Price } from "./styles";
 import { QuantityInput } from "../Form/QuantityInput";
 import { CartContext } from "../../contexts/Cart/CartContext";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 interface CoffeeProps {
   coffee: {
-    id: string
-    title: string
-    description: string
-    tags: string[]
-    price: number
-    image: string
-  }
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+    price: number;
+    image: string;
+  };
 }
 
 export function Card({ coffee }: CoffeeProps) {
-  const { handleSetItems } = useContext(CartContext)
-  const [quantity, setQuantity] = useState(1)
+  const { handleSetItems } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
 
-  function handleIncrementQuantity() {
+  function handleDecrementQuantity() {
     setQuantity((state) => Math.max(1, state - 1));
   }
 
-  function handleDecrementQuantity() {
-    setQuantity((state) => state + 1)
+  function handleIncrementQuantity() {
+    setQuantity((state) => state + 1);
   }
 
   function handleAddItem() {
     handleSetItems({
       id: coffee.id,
-      quantity: quantity
-    })
-    setQuantity(1)
+      image: coffee.image,
+      title: coffee.title,
+      price: coffee.price,
+      quantity: quantity,
+    });
+    setQuantity(1);
     toast.success(
       <div>
-        <strong>{`${quantity}x ${coffee.title}`}</strong><br />
+        <strong>{`${quantity}x ${coffee.title}`}</strong>
+        <br />
         <span>Adicionado ao carrinho</span>
-      </div>, {
-      position: "top-right",
-      autoClose: 1750,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: false,
-      progress: undefined,
-      theme: "light"
-    })
+      </div>,
+      {
+        position: "top-right",
+        autoClose: 1750,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      }
+    );
   }
 
   return (
@@ -55,7 +61,7 @@ export function Card({ coffee }: CoffeeProps) {
       <img src={coffee.image} alt={coffee.title} />
 
       <Tags>
-        {coffee.tags.map(tag => (
+        {coffee.tags.map((tag) => (
           <span>{tag}</span>
         ))}
       </Tags>
@@ -68,7 +74,7 @@ export function Card({ coffee }: CoffeeProps) {
         <Price>
           <span>R$</span>
           <span>
-            {new Intl.NumberFormat('pt-BR', {
+            {new Intl.NumberFormat("pt-BR", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }).format(coffee.price)}
@@ -79,13 +85,12 @@ export function Card({ coffee }: CoffeeProps) {
           quantity={quantity}
           incrementQuantity={handleIncrementQuantity}
           decrementQuantity={handleDecrementQuantity}
-        >
-        </QuantityInput>
+        ></QuantityInput>
 
         <button onClick={handleAddItem}>
           <ShoppingCart size={22} weight="fill" />
         </button>
       </Control>
     </Container>
-  )
+  );
 }
