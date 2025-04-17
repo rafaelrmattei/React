@@ -1,4 +1,5 @@
 import { ActionTypes, ItemActions } from "./actions";
+import { produce } from "immer";
 
 export interface Item {
   id: string;
@@ -20,56 +21,50 @@ function calculateTotalItems(items: Item[]): number {
 export function itemsReducer(state: ItemState, action: ItemActions) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_ITEM: {
-      const newItem = action.payload.item;
-      const itemFound = state.items.find((item) => item.id === newItem.id);
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.item.id
+      );
 
-      if (itemFound) {
-        const updatedItems = state.items.map((item) => {
-          if (item.id === newItem.id) {
-            return {
-              ...item,
-              quantity: item.quantity + newItem.quantity,
-            };
-          }
-          return item;
+      if (itemIndex < 0) {
+        return produce(state, (draft) => {
+          draft.items.push(action.payload.item);
+          draft.itemsQuantity = calculateTotalItems(draft.items);
         });
-
-        return {
-          items: updatedItems,
-          itemsQuantity: calculateTotalItems(updatedItems),
-        };
       } else {
-        const updatedItems = [...state.items, newItem];
-
-        return {
-          items: updatedItems,
-          itemsQuantity: calculateTotalItems(updatedItems),
-        };
+        return produce(state, (draft) => {
+          draft.items[itemIndex].quantity += action.payload.item.quantity;
+          draft.itemsQuantity = calculateTotalItems(draft.items);
+        });
       }
     }
 
     case ActionTypes.UPDATE_QUANTITY_ITEM: {
-      const quantity = action.payload.quantity;
-
-      const updatedItems = state.items.map((prevItem) =>
-        prevItem.id === action.payload.id ? { ...prevItem, quantity } : prevItem
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
       );
 
-      return {
-        items: updatedItems,
-        itemsQuantity: calculateTotalItems(updatedItems),
-      };
+      return produce(state, (draft) => {
+        draft.items[itemIndex].quantity = action.payload.quantity;
+        calculateTotalItems(draft.items);
+      });
     }
 
     case ActionTypes.REMOVE_ITEM: {
-      const updatedItems = state.items.filter(
-        (prevItem) => prevItem.id !== action.payload.id
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
       );
 
-      return {
-        items: updatedItems,
-        itemsQuantity: calculateTotalItems(updatedItems),
-      };
+      return produce(state, (draft) => {
+        draft.items.splice(itemIndex, 1);
+        draft.itemsQuantity = calculateTotalItems(draft.items);
+      });
+    }
+
+    case ActionTypes.CLEAN_CART: {
+      return produce(state, (draft) => {
+        draft.items = [];
+        draft.itemsQuantity = 0;
+      });
     }
 
     default:

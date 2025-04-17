@@ -54,7 +54,7 @@ export const Form = styled.div`
   grid-template-areas:
     "cep . ."
     "street street street"
-    "number fullAddress fullAddress"
+    "number complement complement"
     "neighborhood city state";
   grid-template-columns: 12.5rem 1fr 3.75rem;
   grid-gap: 1rem 0.75rem;
@@ -196,5 +196,15 @@ export const Totals = styled.div`
       font-weight: bold;
       line-height: normal;
     }
+  }
+`;
+
+export const Error = styled.div`
+  color: firebrick;
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  &:empty {
+    display: none;
   }
 `;

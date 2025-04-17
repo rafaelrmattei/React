@@ -4,6 +4,7 @@ export enum ActionTypes {
   ADD_NEW_ITEM = "ADD_NEW_ITEM",
   UPDATE_QUANTITY_ITEM = "UPDATE_QUANTITY_ITEM",
   REMOVE_ITEM = "REMOVE_ITEM",
+  CLEAN_CART = "CLEAN_CART",
 }
 
 export interface AddNewItemAction {
@@ -21,10 +22,15 @@ export interface RemoveItemAction {
   payload: { id: string };
 }
 
+export interface CleanCartAction {
+  type: ActionTypes.CLEAN_CART;
+}
+
 export type ItemActions =
   | AddNewItemAction
   | UpdateQuantityItemAction
-  | RemoveItemAction;
+  | RemoveItemAction
+  | CleanCartAction;
 
 export function addNewItemAction(item: Item): AddNewItemAction {
   return {
@@ -54,5 +60,11 @@ export function removeItemAction(id: string): RemoveItemAction {
     payload: {
       id,
     },
+  };
+}
+
+export function cleanCartAction(): CleanCartAction {
+  return {
+    type: ActionTypes.CLEAN_CART,
   };
 }

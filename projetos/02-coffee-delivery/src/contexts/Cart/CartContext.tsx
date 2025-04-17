@@ -7,6 +7,7 @@ interface CartContextType {
   handleSetItems: (item: Item) => void;
   handleUpdateItemQuantity: (id: string, quantity: number) => void;
   handleRemoveItem: (id: string) => void;
+  handleCleanCart: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType);

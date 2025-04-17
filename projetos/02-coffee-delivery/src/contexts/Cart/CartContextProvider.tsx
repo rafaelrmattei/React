@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useReducer } from "react";
 import { CartContext } from "./CartContext";
 import {
   addNewItemAction,
+  cleanCartAction,
   removeItemAction,
   updateQuantityItemAction,
 } from "../../reducers/items/actions";
@@ -43,6 +44,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(removeItemAction(id));
   }
 
+  function handleCleanCart() {
+    localStorage.setItem("@coffee-delivery:items-1.0.0", JSON.stringify([]));
+    localStorage.setItem(
+      "@coffee-delivery:items-total-1.0.0",
+      JSON.stringify(0)
+    );
+    dispatch(cleanCartAction());
+  }
+
   useEffect(() => {
     localStorage.setItem("@coffee-delivery:items-1.0.0", JSON.stringify(items));
     localStorage.setItem(
@@ -59,6 +69,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         handleSetItems,
         handleUpdateItemQuantity,
         handleRemoveItem,
+        handleCleanCart,
       }}
     >
       {children}

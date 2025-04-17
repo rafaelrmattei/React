@@ -1,7 +1,27 @@
 import { MapPin, Timer, CurrencyDollar } from "phosphor-react";
-import { Container, Title, GradientBorder, Content, Resume, Banner, Icon } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { OrderContext } from "../../contexts/Order/OrderContext";
+import {
+  Container,
+  Title,
+  GradientBorder,
+  Content,
+  Resume,
+  Banner,
+  Icon,
+} from "./styles";
 
 export function Success() {
+  const navigate = useNavigate();
+  const { order } = useContext(OrderContext);
+
+  useEffect(() => {
+    if (!order) {
+      navigate("/");
+    }
+  }, [order, navigate]);
+
   return (
     <Container>
       <Title>
@@ -17,8 +37,11 @@ export function Success() {
                 <MapPin size={16} weight="fill" />
               </Icon>
               <div>
-                <span>Entrega em <strong>Rua João Daniel Martinelli, 102</strong></span>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  Entrega em{" "}
+                  <strong>{`${order?.adress.street}, ${order?.adress.number}`}</strong>
+                </span>
+                <span>{`${order?.adress.neighborhood} - ${order?.adress.city}, ${order?.adress.state}`}</span>
               </div>
             </div>
 
@@ -28,7 +51,9 @@ export function Success() {
               </Icon>
               <div>
                 <span>Previsão de entrega</span>
-                <span><strong>20 min - 30 min</strong></span>
+                <span>
+                  <strong>20 min - 30 min</strong>
+                </span>
               </div>
             </div>
 
@@ -38,7 +63,9 @@ export function Success() {
               </Icon>
               <div>
                 <span>Pagamento na entrega</span>
-                <span><strong>Cartão de Crédito</strong></span>
+                <span>
+                  <strong>{`${order?.paymentMethod}`}</strong>
+                </span>
               </div>
             </div>
           </Resume>
@@ -49,5 +76,5 @@ export function Success() {
         </Banner>
       </Content>
     </Container>
-  )
+  );
 }
