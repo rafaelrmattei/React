@@ -275,6 +275,7 @@ export function Cart() {
                         }
                       ></QuantityInput>
                       <ButtonRemoveItem
+                        type="button"
                         onClick={() => handleClickRemoveItem(item.id)}
                       >
                         <Trash size={16} />
