@@ -23,6 +23,13 @@ npm i styled-components
 npm i @types/styled-components -D # Como não vem com a tipagem, tem que instalar quando usar o Typescript - O -D quer dizer que é só para o ambiente de desenvolvimento
 
 
+# JSON Server
+- Utilizado para simular um servidor com rotas e tudo mais para o ambiente de desenvolvimento
+- npm i json-server -D (-D quer dizer que é só para o ambiente de desenvolvimento)
+- Criar um arquivo json do server no root do projeto. Ex: server.json 
+- Rodar o "backend": npx json-server server.json
+
+
 # UTILIZANDO ROTAS
 npm i react-router-dom
 
