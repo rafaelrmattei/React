@@ -25,9 +25,16 @@ npm i @types/styled-components -D # Como não vem com a tipagem, tem que instala
 
 # JSON Server
 - Utilizado para simular um servidor com rotas e tudo mais para o ambiente de desenvolvimento
-- npm i json-server -D (-D quer dizer que é só para o ambiente de desenvolvimento)
+- npm i json-server@0.17.3 -D (-D quer dizer que é só para o ambiente de desenvolvimento) (0.17.3 por que a ultima versão não tem tudo que tem na .17.3)
 - Criar um arquivo json do server no root do projeto. Ex: server.json 
-- Rodar o "backend": npx json-server server.json
+- Rodar o "backend": npx json-server server.json -p 3333 -w -d 1000 (-d 1000 adiciona um delay para simular um ambiente real)
+- Colocar um atalho para rodar. No packeg.json em scripts: "scripts": { "dev:server": "json-server server.json -p 3333 -w" } # Assim é só rodar npm run dev:server
+
+
+# Axios
+- npm i axios
+- Utilizado para subtituir o fetch por que não tem a API mais amigável do mundo
+- criar a pasta src/lib para configuração do axios
 
 
 # UTILIZANDO ROTAS
