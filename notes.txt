@@ -37,19 +37,6 @@ npm i @types/styled-components -D # Como não vem com a tipagem, tem que instala
 - criar a pasta src/lib para configuração do axios
 
 
-# USE CONTEXT SELECTOR (OTIMIZAÇÃO)
-- npm i use-context-selector scheduler
-- Utilizada para otilização nos contextos. Para não precisar renderizar todo o contexto, e só o que foi chamado dele.
-- import { createContext } from "use-context-selector"; # Altera a chamada do createContext do react para o use-context-selector
-- import { useContextSelector } from "use-context-selector"; # Altera a chamada do useCOntext para useContextSelector e adiciona um parametro de função de retorno do que é preciso utilizar
-  const createTransaction = useContextSelector(
-    TransactionContext,
-    (context) => {
-      return context.createTransaction;
-    }
-  );
-
-
 # UTILIZANDO ROTAS
 npm i react-router-dom
 
@@ -261,4 +248,59 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
   })
 
 
+# USE CONTEXT SELECTOR (OTIMIZAÇÃO)
+- npm i use-context-selector scheduler
+- Utilizada para otilização nos contextos. Para não precisar renderizar todo o contexto, e só o que foi chamado dele.
+- import { createContext } from "use-context-selector"; # Altera a chamada do createContext do react para o use-context-selector
+- import { useContextSelector } from "use-context-selector"; # Altera a chamada do useCOntext para useContextSelector e adiciona um parametro de função de retorno do que é preciso utilizar
+  const createTransaction = useContextSelector(
+    TransactionContext,
+    (context) => {
+      return context.createTransaction;
+    }
+  );
+
+# USE CALLBACK (OTIMIZAÇÃO)
+- Vem do react import { useCallback } from 'react' e serve para evitar que uma função seja recriada se nenhuma informação que aquela função dependa tenha mudado
+- Isso: 
+  async function createTransaction(data: CreateTransactionInput) {
+    const { description, price, category, type } = data;
+
+    const response = await api.post("transactions", {
+      description,
+      price,
+      category,
+      type,
+      createdAt: new Date(),
+    });
+
+    setTransactions((state) => [response.data, ...state]);
+  }
+  Vira isso:
+  const createTransaction = useCallback(
+    async (data: CreateTransactionInput) => {
+      const { description, price, category, type } = data;
+
+      const response = await api.post("transactions", {
+        description,
+        price,
+        category,
+        type,
+        createdAt: new Date(),
+      });
+
+      setTransactions((state) => [response.data, ...state]);
+    },
+    [] # Aqui é um array de dependencias que precisa ser adicionados quando a função depende de uma variavel externa
+  );
+  
+# MEMO (OTIMIZAÇÃO)
+ - Utilizando em componentes que tem HTML muito pesado, exemplo: Longas listas.
+ - Não utilizar em tudo, porque a comparação dele demora mais tempo do que a comparação normal do react. É somente para locais com HTML realmente pesados.
+ - Uso em funções:
+ - Isso:
+  export function SearchFormComponent() {}
+ - Vira isso:
+  function SearchFormComponent() {}
+  export const SearchForm = memo(SearchFormComponent);
   
