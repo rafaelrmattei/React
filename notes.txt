@@ -37,6 +37,19 @@ npm i @types/styled-components -D # Como não vem com a tipagem, tem que instala
 - criar a pasta src/lib para configuração do axios
 
 
+# USE CONTEXT SELECTOR (OTIMIZAÇÃO)
+- npm i use-context-selector scheduler
+- Utilizada para otilização nos contextos. Para não precisar renderizar todo o contexto, e só o que foi chamado dele.
+- import { createContext } from "use-context-selector"; # Altera a chamada do createContext do react para o use-context-selector
+- import { useContextSelector } from "use-context-selector"; # Altera a chamada do useCOntext para useContextSelector e adiciona um parametro de função de retorno do que é preciso utilizar
+  const createTransaction = useContextSelector(
+    TransactionContext,
+    (context) => {
+      return context.createTransaction;
+    }
+  );
+
+
 # UTILIZANDO ROTAS
 npm i react-router-dom
 
