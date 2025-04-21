@@ -293,7 +293,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
     },
     [] # Aqui é um array de dependencias que precisa ser adicionados quando a função depende de uma variavel externa
   );
-  
+
 # MEMO (OTIMIZAÇÃO)
  - Utilizando em componentes que tem HTML muito pesado, exemplo: Longas listas.
  - Não utilizar em tudo, porque a comparação dele demora mais tempo do que a comparação normal do react. É somente para locais com HTML realmente pesados.
@@ -303,4 +303,25 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
  - Vira isso:
   function SearchFormComponent() {}
   export const SearchForm = memo(SearchFormComponent);
+ - Uso em variaveis: #summary só vai recalcular quando transactions mudar
+  const summary = useMemo(() => {
+    return transactions.reduce(
+      (acc, transaction) => {
+        if (transaction.type === "income") {
+          acc.income += transaction.price;
+          acc.total += transaction.price;
+        } else {
+          acc.outcome += transaction.price;
+          acc.total -= transaction.price;
+        }
+
+        return acc;
+      },
+      {
+        income: 0,
+        outcome: 0,
+        total: 0,
+      }
+    );
+  }, [transactions]);
   
