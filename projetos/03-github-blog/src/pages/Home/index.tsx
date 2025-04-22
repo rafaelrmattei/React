@@ -1,62 +1,75 @@
-import { Header, Profile, Name, Description, Extras, Form, Posts } from "./styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare, faBuilding, faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Form, Posts } from "./styles";
 import { Card } from "./components/Card";
-import { NavLink } from "react-router-dom";
+import { api } from "../../lib/axios";
+import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Header } from "./components/Header";
+
+export interface Issue {
+  number?: number;
+  title?: string;
+  body?: string;
+  updated_at?: Date;
+}
+
+interface SearchProps {
+  query?: string;
+}
 
 export function Home() {
+  const [issues, setIssues] = useState<Issue[]>([]);
+  const { register, watch } = useForm<SearchProps>({});
+
+  const getIssues = useCallback(async () => {
+    const response = await api.get("repos/rafaelrmattei/React/issues");
+
+    if (response.status === 200) {
+      setIssues(response.data);
+    }
+  }, []);
+
+  const searchIssues = useCallback(async (query: string) => {
+    const response = await api.get("search/issues", {
+      params: {
+        q: `${query} repo:rafaelrmattei/React is:issue in:title,body`,
+      },
+    });
+
+    if (response.status === 200) {
+      setIssues(response.data.items);
+    }
+  }, []);
+
+  const query = watch("query");
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      if (query) {
+        searchIssues(query);
+      } else {
+        getIssues();
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [getIssues, searchIssues, query]);
+
   return (
     <div>
-      <Header>
-        <img src="https://github.com/rafaelrmattei.png" alt="" />
-
-        <Profile>
-          <Name>
-            <h1>Cameron Williamson</h1>
-            <NavLink to="https://github" target="_blank">
-              <span>GITHUB</span>
-              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-            </NavLink>
-          </Name>
-
-          <Description>
-            Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-            pulvinar vel mass.
-          </Description>
-
-          <Extras>
-            <div>
-              <FontAwesomeIcon icon={faGithub} />
-              <span>cameronwll</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faBuilding} />
-              <span>Rocketseat</span>
-            </div>
-            <div>
-              <FontAwesomeIcon icon={faUserGroup} />
-              <span>32 seguidores</span>
-            </div>
-          </Extras>
-        </Profile>
-      </Header>
+      <Header></Header>
 
       <Form>
         <div>
           <h1>Publicações</h1>
-          <span>6 publicações</span>
+          <span>{issues.length === 1 ? `${issues.length} publicação` : `${issues.length} publicaçôes`}</span>
         </div>
-        <input type="text" placeholder="Buscar conteúdo" />
+        <input type="text" placeholder="Buscar conteúdo" {...register("query")} />
       </Form>
 
       <Posts>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        {issues.map((issue) => (
+          <Card key={issue.number} issue={issue}></Card>
+        ))}
       </Posts>
     </div>
   );
