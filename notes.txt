@@ -339,10 +339,10 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 # PRETTIER TAILWIND (https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
 - Organiza a ordem das classes tailwind
 - npm install -D prettier prettier-plugin-tailwindcss
-- Cria-se o arquivo de configuração prettier.config.cjs e adiciona:
-  module.exports = {
-    plugins: ["prettier-plugin-tailwindcss"],
-  };
+- Cria-se o arquivo de configuração .prettierrc e adiciona:
+  {
+  "plugins": ["prettier-plugin-tailwindcss"]
+  }
 
 # PLUGIN REODENAÇÃO DE IMPORTS E EXPORTS/opctional (https://github.com/lydell/eslint-plugin-simple-import-sort)
 - Reordena as importações para ficar mais bem padronizado
@@ -355,4 +355,12 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
       "simple-import-sort/imports": "error" # isso aqui
     } # isso aqui
   }
+- Adicionar ao settings.json do vscode:
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
 
