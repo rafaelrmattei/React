@@ -328,3 +328,31 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 
 # SHADCN/UI (https://ui.shadcn.com)
 - Biblioteca de componentes que utiliza tailwind
+
+# ESLINT 
+- npm i eslint @rocketseat/eslint-config -D
+- Cria-se o arquivo .eslintrc.json e adiciona:
+  {
+    "extends": ["@rocketseat/eslint-config/react"],
+  }
+
+# PRETTIER TAILWIND (https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+- Organiza a ordem das classes tailwind
+- npm install -D prettier prettier-plugin-tailwindcss
+- Cria-se o arquivo de configuração prettier.config.cjs e adiciona:
+  module.exports = {
+    plugins: ["prettier-plugin-tailwindcss"],
+  };
+
+# PLUGIN REODENAÇÃO DE IMPORTS E EXPORTS/opctional (https://github.com/lydell/eslint-plugin-simple-import-sort)
+- Reordena as importações para ficar mais bem padronizado
+- npm i -D eslint-plugin-simple-import-sort
+- Adiciona ao arquivo .eslintrc.json:
+  {
+    "extends": ["@rocketseat/eslint-config/react"],
+    "plugins": ["simple-import-sort"] # isso aqui
+    "rules": { # isso aqui
+      "simple-import-sort/imports": "error" # isso aqui
+    } # isso aqui
+  }
+
