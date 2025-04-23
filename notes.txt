@@ -325,3 +325,6 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
     );
   }, [transactions]);
   
+
+# SHADCN/UI (https://ui.shadcn.com)
+- Biblioteca de componentes que utiliza tailwind
