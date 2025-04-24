@@ -365,3 +365,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
   },
   "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
 
+
+# RECHARTS 
+- Biblioteca de charts/gráficos
+- npm i recharts
