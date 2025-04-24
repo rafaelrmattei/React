@@ -369,3 +369,14 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 # RECHARTS 
 - Biblioteca de charts/gráficos
 - npm i recharts
+
+
+# REACT QUERY
+- npm i @tanstack/react-query
+  lib/react-query.ts:
+  import { QueryClient } from '@tanstack/react-query'
+  export const queryClient = new QueryClient()
+  App.tsx:
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
