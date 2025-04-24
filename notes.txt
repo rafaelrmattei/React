@@ -39,6 +39,7 @@ npm i @types/styled-components -D # Como não vem com a tipagem, tem que instala
 
 # UTILIZANDO ROTAS
 npm i react-router-dom
+0. Olhar a documentação, pq já foi alterado o formato de uso: https://reactrouter.com/start/data/installation #importante
 
 1 - Criar o arquivo de rotas (Router.tsx) dentro de src
 import { Routes, Route } from 'react-router-dom'
