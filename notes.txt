@@ -390,4 +390,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 
 
 # MSW
+- https://mswjs.io
+- npm i msw -D
 - Construção de Mocks. 
+- Serve para operar a aplicação sem precisar conectar na API.
