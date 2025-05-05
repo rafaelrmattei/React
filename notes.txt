@@ -380,3 +380,9 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
   <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
   </QueryClientProvider>
+
+
+# TESTES
+- Vitest: https://vitest.dev
+- Testing https://testing-library.com
+- Happydom https://github.com/capricorn86/happy-dom
