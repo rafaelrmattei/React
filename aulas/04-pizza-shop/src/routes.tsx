@@ -7,7 +7,7 @@ import { Dashboard } from './pages/app/dashboard/Dashboard'
 import { Orders } from './pages/app/orders/Orders'
 import { SignIn } from './pages/auth/SignIn'
 import { SignUp } from './pages/auth/SignUp'
-import { Error } from './pages/error'
+import { Error } from './pages/Error'
 
 export const router = createBrowserRouter([
   {
