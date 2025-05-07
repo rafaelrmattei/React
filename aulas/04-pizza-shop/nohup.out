@@ -1,0 +1,9 @@
+
+> 04-pizza-shop@0.0.0 dev:test
+> vite --port 5174 --mode test
+
+
+  VITE v6.3.4   test   ready in 859 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
