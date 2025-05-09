@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
         pathname: '**',
       },
     ],
-  }  
-};
+  },
+}
 
-export default nextConfig;
+export default nextConfig

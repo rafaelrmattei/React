@@ -1,40 +1,43 @@
-import { HomeContainer, Product } from "@/styles/pages/home"
+import { HomeContainer, Product } from '@/styles/pages/home'
 import { useKeenSlider } from 'keen-slider/react'
-import Image from "next/image"
 import 'keen-slider/keen-slider.min.css'
-import { stripe } from "@/lib/stripe"
-import { GetStaticProps } from "next"
-import Stripe from "stripe"
+import { stripe } from '@/lib/stripe'
+import { GetStaticProps } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import Stripe from 'stripe'
 
 interface HomeProps {
   products: {
     id: string
     name: string
     imageUrl: string
-    price: number
+    price: string
   }[]
 }
 
 export default function Home({ products }: HomeProps) {
-  const [ sliderRef ] = useKeenSlider({
+  const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 3,      
+      perView: 3,
       spacing: 48,
-    }
+    },
   })
 
   return (
     <HomeContainer ref={sliderRef} className="keen-slider">
       {products.map((product) => {
         return (
-          <Product key={product.id} className="keen-slider__slide">
-            <Image src={product.imageUrl} width={520} height={520} alt={product.name} />
+          <Link key={product.id} href={`/product/${product.id}`} className="keen-slider__slide">
+            <Product>
+              <Image src={product.imageUrl} width={520} height={520} alt={product.name} />
 
-            <footer>
-              <strong>{product.name}</strong>
-              <span>{product.price}</span>
-            </footer>
-          </Product>
+              <footer>
+                <strong>{product.name}</strong>
+                <span>{product.price}</span>
+              </footer>
+            </Product>
+          </Link>
         )
       })}
     </HomeContainer>
@@ -43,10 +46,10 @@ export default function Home({ products }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
-    expand: ['data.default_price']
+    expand: ['data.default_price'],
   })
 
-  const products = response.data.map(product => {
+  const products = response.data.map((product) => {
     const price = product.default_price as Stripe.Price
 
     return {
@@ -59,8 +62,8 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      products
+      products,
     },
-    revalidate: 60 * 60 * 2
+    revalidate: 60 * 60 * 2,
   }
 }
