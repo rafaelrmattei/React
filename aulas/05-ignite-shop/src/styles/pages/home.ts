@@ -2,9 +2,20 @@ import { styled } from '..'
 
 export const HomeContainer = styled('main', {
   display: 'flex',
+  alignItems: 'center',
   width: '100%',
-  maxWidth: 'calc(100vw - ((100vw - 1280px) / 2 ))',
+  maxWidth: 'calc(100dvw - ((100dvw - 88%) / 2 ))',
   marginLeft: 'auto',
+  height: '68dvh',
+  gap: '3rem',
+  overflowX: 'scroll',
+  overflowY: 'hidden',
+  scrollBehavior: 'smooth',
+  scrollbarWidth: 0,
+
+  '&::-webkit-scrollbar': {
+    display: 'none',
+  },
 })
 
 export const Product = styled('div', {
@@ -16,6 +27,8 @@ export const Product = styled('div', {
   alignItems: 'center',
   justifyContent: 'center',
   overflow: 'hidden',
+  height: '68dvh',
+  width: '68dvh',
 
   img: {
     objectFit: 'cover',
