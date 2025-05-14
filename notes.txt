@@ -402,6 +402,13 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - npm i -D typescript: Instala o typescript
 - npx tsc --init: Cria o arquivo de configuração do typescript
 - npx tsx: Inicia o projeto transformando os arquivos ts em js
+- npm i tsup -D: Faz o processo de conversão do código em um pacote js que vai ser carregado por outras aplicações (melhor que o npx tsx pq abrange mais formatos diferentes)
+- No package.json adicionar os scripts: 
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+  },
+
 - Estrutura de pastas: 
 -- packages\
 --- tokens\
