@@ -394,3 +394,20 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - npm i msw -D
 - Construção de Mocks. 
 - Serve para operar a aplicação sem precisar conectar na API.
+
+
+# DESIGN SYSTEM
+- Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
+- npm init -y: Cria o package.json
+- npm i -D typescript: Instala o typescript
+- npx tsc --init: Cria o arquivo de configuração do typescript
+- npx tsx: Inicia o projeto transformando os arquivos ts em js
+- Estrutura de pastas: 
+-- packages\
+--- tokens\
+---- package.json
+---- package-lock.json
+---- tsconfig.json
+---- src\
+----- colors.ts #variáveis usando a linguagem mais abrangente possível para atingir qualquer tecnologia que vá importar
+----- index.ts #exportando o colors.ts
