@@ -399,6 +399,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
 - npm init -y: Cria o package.json
+- Alterar o name no package.json
 - npm i -D typescript: Instala o typescript
 - npx tsc --init: Cria o arquivo de configuração do typescript
 - npx tsx: Inicia o projeto transformando os arquivos ts em js
@@ -408,7 +409,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
   },
-
+- Monorepo
 - Estrutura de pastas: 
 -- packages\
 --- tokens\
