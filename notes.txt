@@ -398,6 +398,7 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
+
 - npm init -y: Cria o package.json
 - Alterar o name no package.json
 - npm i -D typescript: Instala o typescript
@@ -409,13 +410,89 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
   },
-- Monorepo
+
+- Monorepo: npm init -y dentro da pasta root para unificar os pacotes. (react e tokens por exemplo). Vai criar um package.json global.
+- O que vai nesse package.json global:
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
+
+- Para demonstrar que um pacote depende do outro, remover o node_modules dos dois packages, e no package.json de tokens adicionar:
+"devDependencies": {
+  "@ignite-ui/tokens": "*", #Essa instrução
+  "tsup": "^8.4.0",
+  "typescript": "^5.8.3"
+}
+- npm i na pasta root para fazer a instalação do node_modules novamente na raiz
+- Daí pode deletar os package-lock.json de dentro dos pacotes pq não vai mais precisar
+- Isso é feito pq os pacotes utilizam das mesmas dependencias e não precisam estar instalados nos dois. Um na raiz pra eles já chega
+- Informar dentro do package.json de cada pacote onde que ta o index.js. 
+"main": "./dist/index.js",
+"module": "./dist/index.mjs",
+"types": "./dist/index.d.ts",
+
+- Configurar o Typescript que pode ser compartilhavel entre vários pacotes
+- Cria pasta ts-config dentro de packages
+- npm init -y dentro de ts-config pra criar o package.json
+{
+  "name": "@ignite-ui/ts-config",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true
+}
+- Criar o  arquivo base.json dentro de ts-config
+{
+  "compilerOptions": {
+    "composite": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "exclude": ["node_modules"]
+}
+- Criar react.json dentro de ts-config:
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["dom", "ES2015"],
+    "module": "ESNext",
+    "target": "es6"
+  }
+}
+- Dentro dos packages.json dos outros pacotes adicionar nas dependencias:
+"devDependencies": {
+  "@ignite-ui/ts-config": "*",
+}
+- Volta pra raiz e npm i
+
+- Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
+
 - Estrutura de pastas: 
+- 06-design-system
 -- packages\
+--- ts-config\ #pacote de configuração global do ts
+---- base.json
+---- package.json
+---- react.json
+--- react\
 --- tokens\
 ---- package.json
----- package-lock.json
 ---- tsconfig.json
 ---- src\
 ----- colors.ts #variáveis usando a linguagem mais abrangente possível para atingir qualquer tecnologia que vá importar
 ----- index.ts #exportando o colors.ts
+- package.json
+- package-lock.json
