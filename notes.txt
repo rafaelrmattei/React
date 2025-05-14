@@ -491,19 +491,62 @@ React:
 - npm i de novo
 - entra dentro dos pacotes react e tokens e npm run build
 
+- Configurando o ESLint
+- Criar pasta eslint-config dentro de packages
+- Acessar a pasta e iniciar com npm init -y para criar o package.json
+{
+  "name": "@ignite-ui/eslint-config",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js"
+}
+- Instalar as dependencias: npm i -D eslint @rocketseat/eslint-config
+{
+  "name": "@ignite-ui/eslint-config",
+  "license": "MIT",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "eslint": "^8.57.1"
+  }
+}
+- Dentro da index.js:
+module.exports = {
+  extends: ['@rocketseat/eslint-config/react'],
+}
+- Importar dentro dos outros pacotes esse pacote eslint-config
+"devDependencies": {
+  "@ignite-ui/eslint-config": "*",
+}
+- Dentro do pacote react e tokens criar o arquivo .eslintrc.json
+{
+  "extends": "@ignite-ui/eslint-config"
+}
+- No arquivo package.json de react e tokens adicionar o script:
+"scripts": {
+  "lint": "eslint src/**/*.ts* --fix"
+},
+- Dentro do diretório de react e tokens rodar o comando npm run lint
+
 - Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
 
 - Estrutura de pastas: 
 - 06-design-system
 -- packages\
+--- eslint-config\
+---- index.js
+---- package.json
 --- ts-config\ #pacote de configuração global do ts
 ---- base.json
 ---- package.json
 ---- react.json
 --- react\
+---- .eslintrc.json
 --- tokens\
 ---- package.json
 ---- tsconfig.json
+---- .eslintrc.json
 ---- src\
 ----- colors.ts #variáveis usando a linguagem mais abrangente possível para atingir qualquer tecnologia que vá importar
 ----- index.ts #exportando o colors.ts

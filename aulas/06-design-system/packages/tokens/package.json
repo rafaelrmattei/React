@@ -6,15 +6,17 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "lint": "eslint src/**/*.ts* --fix"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@ignite-ui/eslint-config": "*",
     "@ignite-ui/ts-config": "*",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.3.3"
   }
 }
