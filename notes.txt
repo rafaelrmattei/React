@@ -576,6 +576,19 @@ export default defineConfig({
   "../src/stories/**/*.mdx", #Adicionado /src
   "../src/stories/**/*.stories.tsx" #Adicionado /src e deixou só arquivos tsx
 ],
+- Adicionar no package.json de /docs:
+"dependencies": {
+  "@ignite-ui/react": "*",
+  "@ignite-ui/tokens": "*",
+  "@ignite-ui/eslint-config": "*",
+}
+- Parar de rodar e dar um npm i
+- Criar um arquivo na raiz de /docs .eslintrc.json:
+{
+  "extends": "@ignite-ui/eslint-config"
+}
+- Para começar a importar pra dentro do Storybook, tem que abrir a pasta react e deixar rodando o npm run dev pra ir buildando as alterações
+
 
 - Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
 
