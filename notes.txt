@@ -589,6 +589,22 @@ export default defineConfig({
 }
 - Para começar a importar pra dentro do Storybook, tem que abrir a pasta react e deixar rodando o npm run dev pra ir buildando as alterações
 
+- TurboRepo
+- Na pasta raiz: npm i turbo@latest -D
+- Serve para conseguir executar scripts em todos os pacotes ao mesmo tempo
+- Criar arquivo turbo.json na raiz
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "tasks": {
+    "dev": {
+      "cache": false
+    }
+  }
+}
+- No package.json da raiz adicionar o script:
+"scripts": {
+  "dev": "turbo run dev --parallel"
+},
 
 - Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
 
@@ -618,3 +634,4 @@ export default defineConfig({
 ----- index.ts #exportando o colors.ts
 - package.json
 - package-lock.json
+- turbo.json
