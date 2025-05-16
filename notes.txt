@@ -598,12 +598,17 @@ export default defineConfig({
   "tasks": {
     "dev": {
       "cache": false
+    },
+    "build": {
+      "outputs": ["dist/**", "storybook-static/**"],
+      "dependsOn": ["^build"]
     }
   }
 }
 - No package.json da raiz adicionar o script:
 "scripts": {
-  "dev": "turbo run dev --parallel"
+  "dev": "turbo run dev --parallel",
+  "build": "turbo run build"
 },
 
 - Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
