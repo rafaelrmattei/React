@@ -611,6 +611,10 @@ export default defineConfig({
   "build": "turbo run build"
 },
 
+- Instalar pacote de acessibilidade para apontar erros de contraste e outras coisas para deficientes: 
+- npm i @storybook/addon-a11y
+- Adicionar ao docs/.storybook/main.js: addons: ['@storybook/addon-a11y'],
+
 - Licence dentro dos packages.json troca pra MIT pq é um projeto open source aberto para todo mundo
 
 - Estrutura de pastas: 
@@ -640,3 +644,6 @@ export default defineConfig({
 - package.json
 - package-lock.json
 - turbo.json
+
+PUBLICANDO O DESIGN SYSTEM, para utilização publica, utilizando o storybook deployer
+- npm i @storybook/storybook-deployer --save-dev

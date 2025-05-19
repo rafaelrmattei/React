@@ -8,6 +8,13 @@ export default {
     src: 'https://github.com/rafaelrmattei.png',
     alt: 'Rafael Mattei',
   },
+  argTypes: {
+    src: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 } as Meta<AvatarProps>
 
 export const Primary: StoryObj<AvatarProps> = {}
