@@ -1,3 +1,4 @@
 module.exports = {
-  extends: ['@rocketseat/eslint-config/react'],
+  parser: '@typescript-eslint/parser',
+  extends: ['plugin:@typescript-eslint/recommended', 'eslint:recommended', 'prettier'],
 }

@@ -19,7 +19,6 @@ export const CustomTag: StoryObj<HeadingProps> = {
   parameters: {
     docs: {
       description: {
-        // eslint-disable-next-line prettier/prettier
         story: 'Por padrão o heading sempre será um `h2`, mas podemos alterar isso com a propriedade `as`.',
       },
     },
