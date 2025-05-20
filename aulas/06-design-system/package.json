@@ -5,9 +5,13 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=@rafaelrmattei-ignite-ui/docs && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.4",
     "turbo": "^2.5.3",
     "typescript": "^5.3.3"
   },
