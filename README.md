@@ -4,7 +4,7 @@ Aulas
 03 - Project DT Money  
 04 - Project Pizza Shop  
 05 - Ignite Shop  
-06 - Design System: https://rafaelrmattei.github.io/06-design-system/?path=/docs/home--docs
+06 - Design System: https://rafaelrmattei.github.io/06-design-system/
 
 Projetos  
 01 - Project Todo List: https://todolist.rafaelmattei.com.br  
