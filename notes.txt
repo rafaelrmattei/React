@@ -646,4 +646,4 @@ export default defineConfig({
 - turbo.json
 
 PUBLICANDO O DESIGN SYSTEM, para utilização publica, utilizando o storybook deployer
-- npm i @storybook/storybook-deployer --save-dev
+- dentro do diretório docs: npm i @storybook/storybook-deployer --save-dev
