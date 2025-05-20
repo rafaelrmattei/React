@@ -667,11 +667,13 @@ export default defineConfig({
   "ignore": ["@ignite-ui/docs"]
 }
 - no package.json da raiz adicionar os scripts:
+{
 "changeset": "changeset",
 "version-packages": "changeset version",
-"release": "turbo run build --filter=@ignite-ui/docs && changeset publish"
+"release": "turbo run build --filter=packages/docs && changeset publish"
+}
 - Criar uma conta no npmjs.com e executar npm login no terminal
 - criar no npmjs.com uma organization (Tive que alterar todos os packages.json para um nome unico da minha organization rafaelrmattei-ignite-ui)
-
-
-
+- rodar na raiz npm run changeset
+- rodar npm run version-packages
+- rodar npm run release
