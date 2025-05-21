@@ -1,0 +1,22 @@
+{
+  "name": "@rafaelmattei-ignite-ui/tokens",
+  "version": "3.7.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "lint": "eslint src/**/*.ts* --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@rafaelmattei-ignite-ui/eslint-config": "*",
+    "@rafaelmattei-ignite-ui/ts-config": "*",
+    "tsup": "^8.4.0",
+    "typescript": "^5.3.3"
+  }
+}
