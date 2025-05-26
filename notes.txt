@@ -415,6 +415,8 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - Magic Link - Interessante demais. Só pelo e-mail.
 - NEXTAUTH - Foda.. autentica com muita coisa. Mas é bom quando o Back roda no SSR do Next. (https://next-auth.js.org/getting-started/example)
 - npm i next-auth
+- NextAuth/Adapter = Pra não depender somente da autenticação social e criar algo do nosso lado (https://next-auth.js.org/adapters)
+- Como está sendo usado o BD Prisma, deve-se usar a documentação para tal (https://authjs.dev/getting-started/adapters/prisma?_gl=1*1aap0w6*_gcl_au*MTExNzc0OTg1Ni4xNzQ4Mjc1MTc1)
 
 
 # DESIGN SYSTEM
