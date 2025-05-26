@@ -410,6 +410,13 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - npm i nookies
 - npm i @types/cookie -D //Tipagens para o nookies
 
+
+# AUTENTICAÇÃO 
+- Magic Link - Interessante demais. Só pelo e-mail.
+- NEXTAUTH - Foda.. autentica com muita coisa. Mas é bom quando o Back roda no SSR do Next. (https://next-auth.js.org/getting-started/example)
+- npm i next-auth
+
+
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
 
