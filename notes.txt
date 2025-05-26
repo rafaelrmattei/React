@@ -396,6 +396,20 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - Serve para operar a aplicação sem precisar conectar na API.
 
 
+# PRISMA
+- Banco de dados
+- npm i prisma -D //CLI do prisma. Para utilizar os comandos do prisma
+- npm i @prisma/client //Dependencia para lidar com o banco
+- npx prisma init --datasource-provider SQLite // E se quiser trocar de banco não precisa alterar nada de código, só trocar a url de conexão e recriar as migrations
+- Criar as models em prisma/schema.prisma
+- npx prisma migrate dev //Lê o schema.prisma e ve o que foi alterado, oferece para dar um nome do que foi feito e roda as migrations
+- npx prisma studio // Abre uma página para ver o banco de dados
+- Criar pasta src/lib/prisma.ts para fazer a conexão com o prisma. Esse arquivo lê o arquivo env e sabe quais são os dados de conexão
+# NOOKIE
+- Pacote para lidar com cookies
+- npm i nookies
+- npm i @types/cookie -D //Tipagens para o nookies
+
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
 
