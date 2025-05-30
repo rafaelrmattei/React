@@ -425,6 +425,14 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - dentro de /lib/google.ts //Cria a função para automatizar o processo de atualização do token
 
 
+#NEXT SEO
+- Para otimização de SEO.
+- https://github.com/garmeeh/next-seo
+- npm i next-seo
+- Segundo a documentação, adiciona o _app.page.tsx o DefaultSeo
+- E nas páginas em si o NextSeo
+
+
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
 
