@@ -16,6 +16,10 @@ export function buildNextAuthOptions(req: NextApiRequest | NextPageContext['req'
             //Pego no google - urls de escopos exigidos pela nossa aplicação que são necessários autorização
             scope:
               'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/calendar',
+            //Pro google enviar o refreshtoken para atualizar o acesso do usuário
+            prompt: 'consent',
+            access_type: 'offline',
+            response_type: 'code',
           },
         },
         profile(profile: GoogleProfile) {

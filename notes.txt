@@ -419,6 +419,12 @@ Vira isso: const [cycles, dispatch] = useReducer((state: Cycle[], action: unknow
 - Como está sendo usado o BD Prisma, deve-se usar a documentação para tal (https://authjs.dev/getting-started/adapters/prisma?_gl=1*1aap0w6*_gcl_au*MTExNzc0OTg1Ni4xNzQ4Mjc1MTc1)
 
 
+#GOOGLEAPI
+- Serve pra poder dar o refresh no token de acesso
+- npm i googleapis
+- dentro de /lib/google.ts //Cria a função para automatizar o processo de atualização do token
+
+
 # DESIGN SYSTEM
 - Criar pacotes com padrões de design como cores, fontes, e etc para serem usados em diversos projetos
 
