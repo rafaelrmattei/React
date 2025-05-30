@@ -4,7 +4,8 @@ Aulas
 03 - Project DT Money  
 04 - Project Pizza Shop  
 05 - Ignite Shop  
-06 - Design System: https://rafaelrmattei.github.io/06-design-system/
+06 - Design System: https://rafaelrmattei.github.io/06-design-system/  
+07 - Ignite Call: https://07-ignite-call-azure.vercel.app  
 
 Projetos  
 01 - Project Todo List: https://todolist.rafaelmattei.com.br  
