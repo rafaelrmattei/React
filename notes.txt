@@ -18,7 +18,7 @@ npm i phosphor-react
 npm i date-fns
 
 
-# STYLED componentes
+# STYLED componentes	
 npm i styled-components
 npm i @types/styled-components -D # Como não vem com a tipagem, tem que instalar quando usar o Typescript - O -D quer dizer que é só para o ambiente de desenvolvimento
 
