@@ -13,7 +13,6 @@
     "next": "15.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.3.1",
     "zod": "^3.25.67"
   },
   "devDependencies": {
@@ -22,12 +21,14 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cypress": "^14.5.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.13",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "tailwind-merge": "^3.3.1"
   }
 }
