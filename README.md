@@ -6,6 +6,7 @@ Aulas
 05 - Ignite Shop  
 06 - Design System: https://rafaelrmattei.github.io/06-design-system/  
 07 - Ignite Call: https://07-ignite-call-azure.vercel.app  
+07 - Devstore
 
 Projetos  
 01 - Project Todo List: https://todolist.rafaelmattei.com.br  
