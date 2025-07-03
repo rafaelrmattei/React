@@ -2,9 +2,9 @@
 
 This repository contains various projects developed during my learning journey with React and modern web technologies. Each project was built to practice concepts like component design, state management, hooks, API integration, routing, UI systems and a lot more.
 
-Most projects are deployed and run in the browser; some are code-only.
+Most projects are deployed and run in the browser.
 
-## 📘 Course Projects (Rocketseat Ignite)
+## 📘 Course Projects (Rocketseat)
 
 | Project           | Description                                                  | Link                                                               |
 |-------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
@@ -17,7 +17,7 @@ Most projects are deployed and run in the browser; some are code-only.
 | Ignite Call       | Scheduling app integrated with Google Calendar API.           | [🔗 View](https://07-ignite-call-azure.vercel.app)                 |
 | Devstore          | Prototype store UI using shadcn/ui components.                | ✅ Code only                                            |
 
-## 🚀 Personal Projects & Challenges
+## 🚀 Challenges
 
 | Project           | Description                                                  | Link                                                               |
 |-------------------|--------------------------------------------------------------|--------------------------------------------------------------------|
